@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SFR Business · RCT B2B Quick Notes</title>
+<style>
+:root{--r:#E2001A;--rh:#c40016;--bg:#f6f7f9;--pn:#fff;--bd:#e4e7ec;--in:#f2f4f7;--tx:#14171f;--mu:#667085;--ok:#12a36b}
+@media(prefers-color-scheme:dark){:root{--bg:#0d0f13;--pn:#161920;--bd:#262a34;--in:#1d212b;--tx:#eef0f4;--mu:#9aa3b5}}
+*{box-sizing:border-box;margin:0}
+body{font:14px/1.5 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--tx);display:flex;min-height:100vh}
+.side{width:216px;background:var(--pn);border-right:1px solid var(--bd);padding:20px 12px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:24px}
+.brand{display:flex;gap:10px;align-items:center;padding:0 8px}.brand b{background:var(--r);color:#fff;padding:4px 9px;border-radius:6px;font-weight:800;letter-spacing:1px}.brand span{font-weight:600;line-height:1.2}.brand small{display:block;color:var(--mu);font-weight:500;font-size:12px}
+nav{display:flex;flex-direction:column;gap:2px}
+nav button{display:flex;gap:10px;align-items:center;border:0;background:none;color:var(--mu);padding:9px 10px;border-radius:8px;font:inherit;font-weight:500;cursor:pointer;text-align:left}
+nav button:hover{background:var(--in);color:var(--tx)}nav button.on{background:color-mix(in srgb,var(--r) 10%,transparent);color:var(--r);font-weight:600}
+main{flex:1;min-width:0;padding:28px;max-width:1280px;margin:0 auto}
+.view{display:none}.view.on{display:block;animation:in .2s}@keyframes in{from{opacity:0}}
+h1{font-size:20px;margin-bottom:4px}.sub{color:var(--mu);margin-bottom:20px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.card{background:var(--pn);border:1px solid var(--bd);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:16px}
+.sticky{position:sticky;top:20px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.f{display:flex;flex-direction:column;gap:6px;min-width:0}
+label,.lb{font-size:12px;font-weight:600;color:var(--mu)}
+input,select,textarea{font:inherit;color:var(--tx);background:var(--in);border:1px solid var(--bd);border-radius:8px;padding:9px 11px;outline:0;width:100%;transition:.15s}
+input:focus,select:focus,textarea:focus,button:focus-visible{border-color:var(--r);box-shadow:0 0 0 3px color-mix(in srgb,var(--r) 18%,transparent);outline:0}
+textarea{resize:vertical;min-height:90px}
+.chip button{border:0;background:none;color:inherit;font:inherit;cursor:pointer;padding:0}.chip button+button{margin-left:7px;opacity:.65}.chip button+button:hover{opacity:1}.li.sel{border-color:var(--r)}.rb{all:unset;cursor:pointer;flex:1;text-align:left;font-size:13px}.rb:focus-visible{outline:2px solid var(--r);outline-offset:2px}
+.seg{display:flex;background:var(--in);border-radius:8px;padding:3px;gap:3px}.seg button{flex:1;border:0;background:none;padding:6px;border-radius:6px;font:inherit;font-weight:500;color:var(--mu);cursor:pointer}.seg button.on{background:var(--pn);color:var(--tx);box-shadow:0 1px 2px rgba(0,0,0,.18)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{border:1px solid var(--bd);background:var(--in);color:var(--tx);border-radius:99px;padding:5px 11px;font:inherit;font-size:12.5px;cursor:pointer}.chip[aria-pressed=true]{background:var(--r);border-color:var(--r);color:#fff}
+.btn{display:inline-flex;gap:6px;align-items:center;justify-content:center;border:1px solid var(--bd);background:var(--pn);color:var(--tx);padding:8px 13px;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none;transition:.15s}.btn:hover{border-color:var(--r)}.btn.p{background:var(--r);border-color:var(--r);color:#fff}.btn.p:hover{background:var(--rh)}.btn.ok{background:var(--ok);border-color:var(--ok);color:#fff}.btn.s{padding:5px 8px;font-size:12px}.btn.d:hover{color:#d92d20;border-color:#d92d20}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.out{background:var(--in);border:1px solid var(--bd);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.out textarea{font:13px/1.55 ui-monospace,Menlo,monospace;min-height:130px;background:var(--pn)}
+.out pre{white-space:pre-wrap;word-break:break-word;font:13px/1.55 ui-monospace,Menlo,monospace;min-height:120px;max-height:300px;overflow:auto}
+.warn{color:#b54708;background:#fffaeb;border:1px solid #fedf89;padding:6px 10px;border-radius:8px;font-size:12px}
+@media(prefers-color-scheme:dark){.warn{background:#2a2110;color:#fdb022;border-color:#4a3910}}
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.tool{border:1px solid var(--bd);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:12px;background:var(--in)}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--bd)}th{font-size:12px;color:var(--mu)}
+.num{font:600 13px ui-monospace,monospace;background:color-mix(in srgb,var(--r) 10%,transparent);color:var(--r);padding:3px 9px;border-radius:6px}
+.acts{display:flex;gap:6px;justify-content:flex-end}
+.empty{text-align:center;color:var(--mu);padding:28px}
+.notes{display:grid;grid-template-columns:260px 1fr;gap:16px;height:68vh}.notes .card{min-height:0}
+.nl{display:flex;flex-direction:column;gap:4px;overflow:auto}
+.ni{display:flex;justify-content:space-between;gap:6px;align-items:center;padding:8px 10px;border-radius:8px;cursor:pointer;border:1px solid transparent}.ni:hover{background:var(--in)}.ni.on{border-color:var(--r);background:var(--in)}.ni span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--bd);overflow-x:auto;margin-bottom:16px}.tabs button{border:0;background:none;padding:9px 12px;font:inherit;font-weight:600;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tabs button.on{color:var(--r);border-color:var(--r)}
+.li{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--bd);border-radius:10px;background:var(--in)}.li div:first-child{min-width:0}.li pre{white-space:pre-wrap;font:12px/1.5 inherit;color:var(--mu);margin-top:4px;max-height:72px;overflow:hidden}
+.list{display:flex;flex-direction:column;gap:8px}.grp h3{font-size:13px;color:var(--r);margin:10px 0 2px}
+dialog{border:1px solid var(--bd);border-radius:14px;background:var(--pn);color:var(--tx);padding:22px;width:min(560px,92vw);margin:auto}dialog::backdrop{background:rgba(0,0,0,.5)}dialog form{display:flex;flex-direction:column;gap:14px}
+#toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:#14171f;color:#fff;padding:10px 16px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:99}#toast.on{opacity:1;transform:translate(-50%,0)}#toast.err{background:#b42318}
+svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(max-width:900px){body{flex-direction:column}.side{position:fixed;bottom:0;top:auto;left:0;right:0;width:auto;height:auto;flex-direction:row;padding:6px;z-index:20;border-right:0;border-top:1px solid var(--bd)}.brand{display:none}nav{flex-direction:row;flex:1;justify-content:space-around}nav button{flex-direction:column;gap:2px;font-size:11px;padding:6px 8px;text-align:center}main{padding:16px 14px 90px}.grid,.notes{grid-template-columns:1fr}.notes{height:auto}.nl{max-height:160px}.notes textarea{min-height:240px}.sticky{position:static}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<aside class="side">
+  <div class="brand"><b>SFR</b><span>RCT B2B<small>Quick Notes</small></span></div>
+  <nav id="nav">
+    <button data-act="nav" data-v="call" class="on"><i data-i="call"></i>Appel</button>
+    <button data-act="nav" data-v="tools"><i data-i="tool"></i>Outils</button>
+    <button data-act="nav" data-v="transfers"><i data-i="hash"></i>Transferts</button>
+    <button data-act="nav" data-v="notes"><i data-i="note"></i>Notes</button>
+    <button data-act="nav" data-v="cfg"><i data-i="cfg"></i>Config</button>
+  </nav>
+</aside>
+<main>
+<section id="v-call" class="view on">
+  <div class="top"><div><h1>Saisie d’appel</h1><p class="sub">Les notes se mettent à jour en direct. Vous pouvez modifier leur texte avant de copier ; un changement de champ ou de modèle les régénère.</p></div>
+  <button class="btn" data-act="reset"><i data-i="reset"></i>Nouvel appel</button></div>
+  <div class="grid">
+    <div class="card">
+      <div class="row">
+        <div class="f"><span class="lb">Mode</span><div class="seg" data-seg="mode"><button data-val="suivi">Suivi</button><button data-val="cloture">Clôture</button></div></div>
+        <div class="f"><span class="lb">Type d’appel</span><div class="seg" data-seg="type"><button data-val="Entrant">Entrant</button><button data-val="Sortant">Sortant</button></div></div>
+      </div>
+      <div class="row">
+        <div class="f"><label for="ref">N° d’incident</label><input id="ref" data-k="ref" placeholder="INC-982143" autocomplete="off"></div>
+        <div class="f"><label for="phone">Téléphone</label><input id="phone" data-k="phone" type="tel" placeholder="01 23 45 67 89" autocomplete="off"></div>
+      </div>
+      <div class="row">
+        <div class="f"><label for="civ">Civilité</label><select id="civ" data-k="civ"><option>M.</option><option>Mme</option></select></div>
+        <div class="f"><label for="name">Nom du client</label><input id="name" data-k="name" placeholder="Dupont" autocomplete="off"></div>
+      </div>
+      <div class="f"><label for="prob">Problématique</label><select id="prob" data-k="prob"></select></div>
+      <div class="f"><span class="lb">Actions menées</span><div class="chips" id="acts"></div></div>
+      <div class="f"><label for="conc">Conclusion</label><select id="conc" data-k="conc"></select></div>
+      <div class="f"><label for="tpl">Modèle de note externe</label><select id="tpl" data-k="tpl"></select></div>
+      <label style="display:flex;gap:8px;align-items:center;font-size:14px;color:var(--tx)"><input type="checkbox" id="recall" style="width:auto">Rappel nécessaire</label>
+      <div class="f" id="rcGroup" hidden><label for="dt">Date et heure du rappel</label><input id="dt" data-k="dt" type="datetime-local"></div>
+    </div>
+    <div class="card sticky">
+      <div class="out"><div class="top"><span class="lb">Note interne · modifiable</span><button class="btn p s" data-act="copy" data-t="#oi"><i data-i="copy"></i>Copier</button></div><textarea id="oi" rows="8" aria-label="Note interne"></textarea></div>
+      <div class="out"><div class="top"><span class="lb">Note externe · modifiable</span><button class="btn p s" data-act="copy" data-t="#oe"><i data-i="copy"></i>Copier</button></div><div class="warn" id="warn" hidden></div><textarea id="oe" rows="14" aria-label="Note externe"></textarea></div>
+    </div>
+  </div>
+</section>
+
+<section id="v-tools" class="view">
+  <div class="top"><div><h1>Outils métiers</h1><p class="sub">Accès rapide à vos applications.</p></div><button class="btn p" data-act="add" data-k="tools"><i data-i="plus"></i>Ajouter un outil</button></div>
+  <div class="card"><input id="qt" type="search" placeholder="Rechercher un outil…" aria-label="Rechercher un outil"><div class="tools" id="toolsBox"></div></div>
+</section>
+
+<section id="v-transfers" class="view">
+  <div class="top"><div><h1>Numéros de transfert</h1><p class="sub">Numéros courts des services internes.</p></div><button class="btn p" data-act="add" data-k="transfers"><i data-i="plus"></i>Ajouter un numéro</button></div>
+  <div class="card"><input id="qr" type="search" placeholder="Rechercher un service ou un numéro…" aria-label="Rechercher un numéro"><div style="overflow-x:auto"><table><thead><tr><th>Service</th><th>Numéro</th><th></th></tr></thead><tbody id="trBox"></tbody></table></div></div>
+</section>
+
+<section id="v-notes" class="view">
+  <h1>Bloc-notes</h1><p class="sub">Enregistrement automatique sur cet appareil.</p>
+  <div class="notes">
+    <div class="card"><button class="btn p" data-act="newNote"><i data-i="plus"></i>Nouvelle note</button><div style="display:flex;gap:6px"><input id="qn" type="search" placeholder="Rechercher une note…" aria-label="Rechercher une note" autocomplete="off"><button class="btn" data-act="searchnote" aria-label="Rechercher"><i data-i="search"></i></button></div><div class="nl" id="nl"></div></div>
+    <div class="card"><div class="f"><label for="nt">Titre</label><input id="nt" placeholder="Titre de la note"></div><div class="f" style="flex:1"><label for="nb">Contenu</label><textarea id="nb" style="flex:1" placeholder="Saisissez vos notes ici…"></textarea></div></div>
+  </div>
+</section>
+
+<section id="v-cfg" class="view">
+  <h1>Configuration</h1><p class="sub">Variables des modèles : <code>{CIVILITE}</code> <code>{NOM}</code> <code>{TELEPHONE}</code> <code>{INCIDENT}</code> <code>{DATE}</code> <code>{HEURE}</code></p>
+  <div class="card"><div class="tabs" id="tabs"></div><div id="cfgBox"></div>
+    <div class="acts" style="flex-wrap:wrap;border-top:1px solid var(--bd);padding-top:16px">
+      <button class="btn" data-act="export"><i data-i="dl"></i>Exporter (JSON)</button>
+      <button class="btn" data-act="import"><i data-i="up"></i>Importer</button>
+      <input type="file" id="file" accept=".json,application/json" hidden>
+      <button class="btn d" data-act="defaults">Réinitialiser</button>
+    </div>
+  </div>
+</section>
+</main>
+<dialog id="dlg"></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const KEY='sfr_qn_v2',OLD='sfr_app_state_v14',NK='sfr_user_notes',DK='sfr_qn_draft';
+const rd=(k,f)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):f}catch{return f}};
+let warned=false;
+const wr=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{if(!warned){warned=true;toast('Stockage local indisponible : les données ne seront pas conservées','err')}}};
+const P={call:'<path d="M22 17v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.300-1.300a2 2 0 0 1 2.100-.4c.9.3 1.800.6 2.800.7A2 2 0 0 1 22 17z"/>',tool:'<path d="M14.700 6.300a4 4 0 0 0-5.400 5.400L3 18l3 3 6.300-6.300a4 4 0 0 0 5.400-5.400l-2.500 2.500-2.400-.6-.6-2.400z"/>',hash:'<path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/>',note:'<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>',cfg:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.900 4.900 7 7M17 17l2.100 2.100M4.900 19.100 7 17M17 7l2.100-2.100"/>',copy:'<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/>',plus:'<path d="M12 5v14M5 12h14"/>',edit:'<path d="M12 20h9M16.500 3.500a2.100 2.100 0 0 1 3 3L7 19l-4 1 1-4z"/>',trash:'<path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/>',ext:'<path d="M7 17 17 7M8 7h9v9"/>',reset:'<path d="M3 12a9 9 0 1 0 3-6.700L3 8M3 3v5h5"/>',dl:'<path d="M12 3v12M7 10l5 5 5-5M4 21h16"/>',up:'<path d="M12 15V3M7 8l5-5 5 5M4 21h16"/>',search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',check:'<path d="M5 12l5 5 9-10"/>'};
+const ic=n=>`<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${P[n]}</svg>`;
+const normUrl=u=>{try{u=String(u).trim();u=/^[a-z]+:/i.test(u)?u:'https://'+u;const x=new URL(u);return/^https?:$/.test(x.protocol)?x.href:''}catch{return''}};
+
+/* ---------- Données par défaut ---------- */
+function mk(){
+  const H="Bonjour {CIVILITE} {NOM},\n\n",SIG="\n\nCordialement,\nL’équipe SFR Business\nRelation Clients Technique B2B - Michel";
+  const TEL="L’équipe SFR Business reste à votre disposition au 1025 (le 01025 si votre entreprise l’impose) ou au +33 1 73 60 10 25 depuis l’étranger, ou via votre Espace Client.";
+  const ESP="Vous pouvez compléter ou consulter à tout moment votre dossier via votre Espace Client www.sfrbusiness.fr, rubrique « Assistance > Vos Incidents ».";
+  const T=(title,b)=>({title,text:H+b+SIG});
+  const pc=(category,items)=>({category,items});
+  const lst=a=>a.map(text=>({text}));
+  return{
+    problemsCategories:[
+      pc('Appels',['Problème de couverture réseau / Absence de réseau','Echec d’émission d’appels','Echec de réception d’appels','Echec d’émission et réception d’appels','Problème de qualité audio / Coupure d’appels']),
+      pc('Internet',['Echec de connexion','Problème d’accès internet','Problème de navigation / lenteur','Problème de partage de connexion','Problème avec mon routeur 3G / 4G']),
+      pc('SMS',['Echec d’émission de SMS','Echec de réception de SMS','Echec d’émission et de réception SMS','Envoi multiple de SMS','Réception multiple de SMS']),
+      pc('MMS',['Echec d’émission de MMS','Echec de réception de MMS','Echec d’émission et de réception MMS','Envoi multiple de MMS','Réception multiple de MMS']),
+      pc('Répondeur',['Problème de consultation des messages','Problème de dépôt des messages','Problème de notification des nouveaux messages','Problème de personnalisation du répondeur','Problème avec le menu du répondeur'])],
+    conclusions:lst(['Tests validés avec le client, ligne opérationnelle. Accord pour clôture.','Relance effectuée. Incident laissé en attente de validation client.','Ticket transmis à l’expertise Réseau pour analyse approfondie.','Demande d’ordre administratif. Orienté vers le service client dédié.','Client indisponible — Message vocal laissé.','Demande d’informations concernant l’incident en cours','Ticket transmis au N2 pour investigation.','Clôture du ticket validée par le client via son espace client.','En attente des actions de la part du client.','Problème terminal : client réorienté vers son support IT.','Carte SIM HS. Client invité à commander une nouvelle SIM.']),
+    actions:lst(['Délocalisation','Reboot du terminal','Réinitialisation des réglages réseau','Test de ligne KO','Changement de carte SIM','Désactivation de Live Voicemail (Apple)','Test croisé','Désactivation des appels Wi-Fi','Activation des données en itinérance','Vidage du cache de l’application Messages','Vérification de l’APN']),
+    suiviTemplates:[
+      T('Suivi standard d’intervention',"Nous vous confirmons la prise en charge de votre incident {INCIDENT}. Nos équipes poursuivent les analyses techniques sur votre ligne ({TELEPHONE}).\n\nNous vous tiendrons informé de l’avancement dans les plus brefs délais."),
+      T('Test croisé',"Suite à notre échange au {TELEPHONE} concernant l’incident {INCIDENT}, nous devons procéder à un test croisé afin d’identifier l’origine du dysfonctionnement.\n\nIl consiste à tester votre carte SIM dans un autre appareil, puis une autre carte SIM dans votre téléphone. Merci de nous transmettre le résultat de ces deux essais.\n\n"+TEL),
+      T('Horodatage',"Nous avons essayé de vous contacter au {TELEPHONE} au sujet de l’incident {INCIDENT} et vous avons laissé un message vocal.\n\nPour analyser le problème, merci de nous transmettre un horodatage de moins de 72 heures :\n\nLieu exact :\nDate et heure précises :\nN° appelant (sur zone impactée ? O/N) :\nN° appelé (sur zone impactée ? O/N) :\nRéseau (2G/3G/4G/5G) :\nSituation (intérieur / extérieur) :\nNombre de barres de réseau :\nDescription du dysfonctionnement :\n\n"+ESP+"\n\n"+TEL),
+      T('Suivi d’incident',"Nous avons bien pris en compte votre appel concernant l’incident {INCIDENT}. L’équipe en charge de votre dossier a été informée de l’urgence de la situation.\n\nTout est mis en œuvre pour résoudre cet incident au plus vite, et vous aurez un retour dans de brefs délais.\n\n"+ESP+"\n\nNous nous excusons pour la gêne occasionnée.\n\n"+TEL),
+      T('Non-réponse - 1ère tentative',"Nous avons tenté de vous joindre au {TELEPHONE} au sujet de l’incident {INCIDENT}, sans succès. Un message vocal a été laissé sur votre répondeur. Nous reprendrons contact avec vous le {DATE}.\n\n"+ESP+"\n\n"+TEL),
+      T('Non-réponse - 2ème tentative',"Nous avons tenté de vous joindre au {TELEPHONE} au sujet de l’incident {INCIDENT}, sans succès. Un message vocal a été déposé sur votre répondeur.\n\nNous renouvelons notre appel le {DATE}. Sans réponse de votre part à cette date, nous procéderons à la clôture automatique de votre dossier.\n\n"+ESP+"\n\n"+TEL+"\n\nNous vous remercions de votre compréhension."),
+      T('Clôture - injoignabilité',"Nous avons essayé de vous joindre à plusieurs reprises au {TELEPHONE} depuis le {DATE} concernant l’incident {INCIDENT}, sans succès.\n\nSans retour de votre part, nous ne pouvons pas poursuivre nos vérifications et sommes contraints de clôturer ce ticket. Vous pouvez le rouvrir sous 5 jours.\n\n"+TEL+"\n\nNous vous remercions de votre compréhension."),
+      T('Test de la carte SIM du routeur dans un téléphone',"Comme convenu lors de notre échange concernant l’incident {INCIDENT}, merci de retirer la carte SIM du routeur et de l’insérer dans un téléphone mobile afin de tester la connexion internet.\n\nJe vous recontacterai par téléphone à {HEURE}, comme prévu."),
+      T('Escalade N2',"Suite à notre échange concernant l’incident {INCIDENT}, celui-ci a été transféré vers une cellule spécialisée pour des vérifications plus approfondies.\n\nNos services reviendront vers vous dans les meilleurs délais.\n\nNous vous remercions pour votre compréhension.")],
+    clotureTemplates:[
+      T('Clôture - Accord client',"Suite à notre échange au {TELEPHONE} concernant l’incident {INCIDENT}, vous nous confirmez le rétablissement complet de vos services et nous donnez votre accord pour clôturer le dossier.\n\nAfin d’améliorer la qualité de nos services, vous recevrez prochainement une enquête de satisfaction. Nous vous remercions par avance du temps que vous consacrerez à y répondre."),
+      T('Clôture - Accord client via Espace Client',"Suite à votre validation de résolution depuis votre Espace Client concernant l’incident {INCIDENT}, vous nous confirmez le rétablissement de vos services et nous donnez votre accord pour clôturer l’incident.\n\nAfin d’améliorer la qualité de nos services, vous recevrez prochainement une enquête de satisfaction. Nous vous remercions par avance du temps que vous consacrerez à y répondre."),
+      T('Clôture - Demande administrative',"Suite à notre échange au {TELEPHONE} concernant l’incident {INCIDENT}, votre demande étant d’ordre administratif et non technique, votre dossier a été réorienté vers le service compétent. Nous clôturons donc ce ticket technique.\n\n"+TEL),
+      T('Clôture - NRP',"Malgré nos relances depuis le {DATE} au {TELEPHONE} concernant l’incident {INCIDENT}, nous sommes sans nouvelles de votre part.\n\nSans éléments complémentaires pour avancer, nous clôturons ce ticket. Vous pouvez le rouvrir sous 5 jours.\n\n"+ESP+"\n\n"+TEL+"\n\nNous vous remercions de votre compréhension."),
+      T('Clôture - Messagerie en direct',"Suite à notre échange, l’incident lié à votre message d’accueil était causé par la fonctionnalité Messagerie en direct (Live Voicemail) de votre iPhone.\n\nCette option entre en conflit avec le répondeur SFR. Sa désactivation résout le problème.\n\n"+TEL),
+      T('Clôture - Carte SIM HS',"Faisant suite à notre échange concernant l’incident {INCIDENT}, votre carte SIM est actuellement hors d’usage. Nous vous invitons à en commander une nouvelle via votre Espace Client ou par téléphone au 1025 (choix 2).\n\nNous clôturons ce ticket, mais restons à votre disposition si vous avez la moindre question.")],
+    tools:`SFR&CO|https://sfrnco-frontoffice-v2.private.sfr.com/home
+SIGMA|http://sigmaent.private.sfr.com/sigmaent/login/LoginPage
+CLARIFY|https://virtualspace.private.sfr.com/
+DIAG|https://diag.private.sfr.com/index.php?task=auth
+KPSA|https://intra-oss.private.sfr.com/trans_Web/
+ODIN|https://odin-loki.private.sfr.com/
+CENTRIC|https://centricb2b.private.sfr.com/
+OneClick|https://oneclick.private.sfr.com/login/
+My PC|https://mypc-v2.private.sfr.com/secure/login
+IAP|https://intranetstc.private.sfr.com:8092/v4/
+MapLO|https://sonarplus.private.sfr.com/spa/maplo/
+Dashboard|https://script.google.com/a/macros/intelcia.com/s/AKfycbzTgfDVCBjN7U8umsqfDlg0az4teAwacxJHB4x-9cDsq-rz1hnh_0y-nd3fLKrfijYJjA/exec
+Formez-vous|https://sfr-formez-vous.360learning.com/?logout=1
+Planning|https://teleoptiv8.intelcia.com/TeleoptiWFM/Web/MyTime#Schedule
+Intelcia|https://in.intelcia.com/web/ma
+RC One 360|https://rc360.private.sfr.com/home
+SENTRY V2|https://sentry.snt.private.sfr.com/PasswordVault/logon.aspx?ReturnUrl=%2fPasswordVault%2fdefault.aspx`.split('\n').map(l=>{const[name,...u]=l.split('|');return{name,url:u.join('|')}}),
+    transfers:`RISING|32000
+RCT Mobile UFE|32001
+RCT Mobile N1|32002
+Rétention|32003
+SAV Echange Entreprise|32004
+RCT Fixe GC N1|32005
+Cellule ADSL (GP)|32006
+Cellule SFR Pro (GP)|32007
+Cellule Accueil Déploiement|32008
+RC Marché Public (POOL)|32009
+Extranet de Cmd|32010
+RC Admin Completel N1|32011
+RC Admin N1|32012
+UFE Admin|32013
+RELCO N1|32014
+RCT Fixe N1|32015
+RC CCR|32020
+ANC Entreprise|32021
+RELCO MOBILE N2|32022
+RELCO FIXE/ANC/CU/SERVICE N2|32023
+RC SERVICE N1|32026
+SFR DIRECT ENTREPRISE N1|32028
+RCT FLUX VOIX Marseille|32029
+RCT FLUX PACK BUSINESS|32030
+SFR DIRECT Premium|32031
+OSR CSM|32033`.split('\n').map(l=>{const[name,number]=l.split('|');return{name,number}})};
+}
+function norm(o){
+  const m=mk();o=o&&typeof o==='object'?o:{};const a=k=>Array.isArray(o[k])?o[k]:m[k];
+  const t=x=>x.filter(i=>i&&typeof i.title==='string'&&typeof i.text==='string').map(i=>({title:i.title,text:i.text}));
+  const tx=x=>x.map(i=>({text:String(typeof i==='string'?i:i&&i.text||'')})).filter(i=>i.text);
+  return{suiviTemplates:t(a('suiviTemplates')),clotureTemplates:t(a('clotureTemplates')),conclusions:tx(a('conclusions')),actions:tx(a('actions')),
+    problemsCategories:a('problemsCategories').filter(c=>c&&typeof c.category==='string').map(c=>({category:c.category,items:(Array.isArray(c.items)?c.items:[]).filter(i=>typeof i==='string')})),
+    tools:a('tools').filter(x=>x&&x.name&&normUrl(x.url)).map(x=>({name:String(x.name),url:normUrl(x.url)})),
+    transfers:a('transfers').filter(x=>x&&x.name&&x.number).map(x=>({name:String(x.name),number:String(x.number)}))};
+}
+let S=norm(rd(KEY,null)||rd(OLD,null));
+let N=rd(NK,[]);N=Array.isArray(N)?N.filter(n=>n&&n.id):[];
+let noteId=N[0]?.id,cfgTab='suiviTemplates',editT=null,nTimer;
+const D=Object.assign({mode:'suivi',type:'Entrant',ref:'',phone:'',civ:'M.',name:'',prob:'',conc:'',tpl:'',acts:[],recall:false,dt:'',date:'',time:''},rd(DK,{}));
+if(!Array.isArray(D.acts))D.acts=[];
+const persist=()=>{editT=null;wr(KEY,S);renderAll()};
+
+/* ---------- Utilitaires UI ---------- */
+let tt;function toast(m,err){const t=$('#toast');t.textContent=m;t.className='on'+(err?' err':'');clearTimeout(tt);tt=setTimeout(()=>t.className='',2400)}
+async function copy(text,btn){
+  try{await navigator.clipboard.writeText(text)}catch{const a=document.createElement('textarea');a.value=text;document.body.appendChild(a);a.select();let ok=false;try{ok=document.execCommand('copy')}catch{}a.remove();if(!ok)return toast('Copie impossible : sélectionnez le texte manuellement','err')}
+  toast('Copié dans le presse-papiers');if(btn){const h=btn.innerHTML;btn.classList.add('ok');btn.innerHTML=ic('check')+'Copié';setTimeout(()=>{btn.classList.remove('ok');btn.innerHTML=h},1400)}
+}
+function dlg({title,msg,fields=[],ok='Enregistrer',danger}){
+  return new Promise(res=>{
+    const d=$('#dlg');
+    d.innerHTML=`<form><h2 style="font-size:16px">${esc(title)}</h2>${msg?`<p class="sub" style="margin:0">${esc(msg)}</p>`:''}
+    ${fields.map(f=>`<div class="f"><label for="df_${f.n}">${esc(f.l)}</label>${f.t==='area'?`<textarea id="df_${f.n}" name="${f.n}" rows="9" required>${esc(f.v)}</textarea>`:`<input id="df_${f.n}" name="${f.n}" ${f.list?'list="dl"':''} value="${esc(f.v)}" required autocomplete="off">`}${f.list?`<datalist id="dl">${f.list.map(x=>`<option value="${esc(x)}">`).join('')}</datalist>`:''}${f.vars?`<div class="chips">${['CIVILITE','NOM','TELEPHONE','INCIDENT','DATE','HEURE'].map(v=>`<button type="button" class="chip" data-var="{${v}}">{${v}}</button>`).join('')}</div>`:''}</div>`).join('')}
+    <div class="acts"><button type="button" class="btn" data-x>Annuler</button><button class="btn ${danger?'d':'p'}">${esc(ok)}</button></div></form>`;
+    const f=d.querySelector('form');
+    d.querySelector('[data-x]').onclick=()=>d.close();
+    f.onclick=e=>{const v=e.target.dataset.var;if(v){const a=f.querySelector('textarea'),s=a.selectionStart;a.setRangeText(v,s,a.selectionEnd,'end');a.focus()}};
+    f.onsubmit=e=>{e.preventDefault();const o={};fields.forEach(x=>o[x.n]=f.elements[x.n].value.trim());if(fields.some(x=>!o[x.n]))return toast('Tous les champs sont obligatoires','err');d.close();res(fields.length?o:true)};
+    d.addEventListener('close',()=>res(null),{once:true});
+    d.showModal();f.querySelector('input,textarea')?.focus();
+  });
+}
+const FIELDS={suiviTemplates:[['title','Titre','text'],['text','Contenu du message','area']],clotureTemplates:[['title','Titre','text'],['text','Contenu du message','area']],conclusions:[['text','Texte de la conclusion','area']],actions:[['text','Intitulé de l’action','text']],tools:[['name','Nom de l’outil','text'],['url','URL','text']],transfers:[['name','Service / entité','text'],['number','Numéro court','text']]};
+async function editItem(k,i){
+  const cur=i<0?{}:S[k][i];
+  const v=await dlg({title:i<0?'Ajouter':'Modifier',fields:FIELDS[k].map(([n,l,t])=>({n,l,t,v:cur[n]||'',vars:n==='text'&&/Templates/.test(k)}))});
+  if(!v)return;
+  if(k==='tools'){v.url=normUrl(v.url);if(!v.url)return toast('URL invalide (http ou https attendu)','err')}
+  if(i<0)S[k].push(v);else S[k][i]=v;
+  persist();toast(i<0?'Élément ajouté':'Modifications enregistrées');
+}
+async function delItem(k,i){if(await dlg({title:'Supprimer cet élément ?',msg:'Cette action est définitive.',ok:'Supprimer',danger:1})){S[k].splice(i,1);persist();toast('Élément supprimé')}}
+
+/* ---------- Appel ---------- */
+const tplList=()=>S[D.mode==='suivi'?'suiviTemplates':'clotureTemplates'];
+function renderCall(){
+  const opt=(v,t)=>`<option value="${esc(v)}">${esc(t??v)}</option>`;
+  $('#prob').innerHTML=S.problemsCategories.map(c=>`<optgroup label="${esc(c.category)}">${c.items.map(i=>opt(i)).join('')}</optgroup>`).join('');
+  $('#conc').innerHTML=S.conclusions.map(c=>opt(c.text)).join('');
+  $('#tpl').innerHTML=tplList().map(t=>opt(t.title)).join('');
+  const has=(sel,v)=>[...$(sel).options].some(o=>o.value===v);
+  if(!has('#prob',D.prob))D.prob=$('#prob').options[0]?.value||'';
+  if(!has('#conc',D.conc))D.conc=$('#conc').options[0]?.value||'';
+  if(!has('#tpl',D.tpl))D.tpl=$('#tpl').options[0]?.value||'';
+  D.acts=D.acts.filter(a=>S.actions.some(x=>x.text===a));
+  $('#acts').innerHTML=S.actions.length?S.actions.map(a=>`<button type="button" class="chip" data-act="chip" data-v="${esc(a.text)}" aria-pressed="${D.acts.includes(a.text)}">${esc(a.text)}</button>`).join(''):'<span class="sub" style="margin:0">Aucune action configurée.</span>';
+  $$('[data-k]').forEach(e=>{if(e.type!=='checkbox')e.value=D[e.dataset.k]??''});
+  $$('[data-seg]').forEach(s=>[...s.children].forEach(b=>b.classList.toggle('on',b.dataset.val===D[s.dataset.seg])));
+  $('#recall').checked=D.recall;$('#rcGroup').hidden=!D.recall;
+  refresh();
+}
+function refresh(){
+  wr(DK,D);
+  const t=tplList().find(x=>x.title===D.tpl);
+  const rc=D.recall&&D.dt?new Date(D.dt):null,ok=rc&&!isNaN(rc);
+  const rs=!D.recall?'Non':ok?`Oui (${rc.toLocaleString('fr-FR',{dateStyle:'short',timeStyle:'short'})})`:'Oui (heure non définie)';
+  $('#oi').value=`Type : Appel ${D.type}\nMode : ${D.mode.toUpperCase()}\nIncRef : ${D.ref||'N/C'}\nContact : ${D.civ} ${D.name||'[Nom]'} (${D.phone||'N/C'})\nMotif : ${D.prob||'N/C'}\nActions menées : ${D.acts.join(', ')||'Aucune'}\nConclusion : ${D.conc||'N/C'}\nRappel : ${rs}`;
+  const v={CIVILITE:D.civ,NOM:D.name,TELEPHONE:D.phone,INCIDENT:D.ref,DATE:ok?rc.toLocaleDateString('fr-FR'):'',HEURE:ok?rc.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}).replace(':','h'):''};
+  const ext=t?t.text.replace(/\{([A-Z]+)\}/g,(m,k)=>v[k]||m):'';
+  const miss=[...new Set(ext.match(/\{[A-Z]+\}/g)||[])];
+  $('#warn').hidden=!miss.length;$('#warn').textContent=miss.length?'À renseigner : '+miss.join(', '):'';
+  $('#oe').value=ext||'Aucun modèle disponible. Ajoutez-en dans Config.';
+}
+async function resetCall(){
+  if((D.ref||D.phone||D.name||D.acts.length)&&!await dlg({title:'Démarrer un nouvel appel ?',msg:'Les champs saisis seront effacés.',ok:'Effacer',danger:1}))return;
+  Object.assign(D,{ref:'',phone:'',name:'',civ:'M.',type:'Entrant',mode:'suivi',acts:[],recall:false,dt:'',prob:'',conc:'',tpl:''});
+  renderCall();toast('Formulaire réinitialisé');
+}
+document.addEventListener('input',e=>{const k=e.target.dataset?.k;if(k){D[k]=e.target.value;refresh()}});
+$('#recall').onchange=e=>{D.recall=e.target.checked;$('#rcGroup').hidden=!D.recall;refresh()};
+
+/* ---------- Outils / Transferts ---------- */
+function renderTools(){
+  const q=$('#qt').value.toLowerCase(),r=S.tools.map((t,i)=>({...t,i})).filter(t=>t.name.toLowerCase().includes(q));
+  $('#toolsBox').innerHTML=r.length?r.map(t=>`<div class="tool"><div class="top"><strong>${esc(t.name)}</strong><div class="acts"><button class="btn s" data-act="edit" data-k="tools" data-i="${t.i}" aria-label="Modifier ${esc(t.name)}">${ic('edit')}</button><button class="btn s d" data-act="del" data-k="tools" data-i="${t.i}" aria-label="Supprimer ${esc(t.name)}">${ic('trash')}</button></div></div><a class="btn p" href="${esc(t.url)}" target="_blank" rel="noopener noreferrer">Ouvrir ${ic('ext')}</a></div>`).join(''):'<p class="empty" style="grid-column:1/-1">Aucun outil trouvé.</p>';
+}
+function renderTransfers(){
+  const q=$('#qr').value.toLowerCase(),r=S.transfers.map((t,i)=>({...t,i})).filter(t=>t.name.toLowerCase().includes(q)||t.number.includes(q));
+  $('#trBox').innerHTML=r.length?r.map(t=>`<tr><td><strong>${esc(t.name)}</strong></td><td><span class="num">${esc(t.number)}</span></td><td><div class="acts"><button class="btn s" data-act="copyn" data-i="${t.i}">${ic('copy')}Copier</button><button class="btn s" data-act="edit" data-k="transfers" data-i="${t.i}" aria-label="Modifier">${ic('edit')}</button><button class="btn s d" data-act="del" data-k="transfers" data-i="${t.i}" aria-label="Supprimer">${ic('trash')}</button></div></td></tr>`).join(''):'<tr><td colspan="3" class="empty">Aucun numéro trouvé.</td></tr>';
+}
+$('#qt').oninput=renderTools;$('#qr').oninput=renderTransfers;
+
+/* ---------- Notes ---------- */
+const saveNotes=()=>wr(NK,N);
+const fold=x=>String(x).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+function renderNl(){
+  const q=fold($('#qn').value.trim()),l=q?N.filter(n=>fold(n.title).includes(q)||fold(n.body).includes(q)):N;
+  $('#nl').innerHTML=l.map(n=>`<div class="ni ${n.id===noteId?'on':''}" data-act="selnote" data-id="${n.id}" tabindex="0"><span id="ni_${n.id}">${esc(n.title||'Sans titre')}</span><button class="btn s d" data-act="delnote" data-id="${n.id}" aria-label="Supprimer la note">${ic('trash')}</button></div>`).join('')||`<p class="empty">${q?'Aucune note trouvée.':'Aucune note.'}</p>`;
+}
+function renderNotes(){
+  renderNl();
+  const n=N.find(x=>x.id===noteId);$('#nt').value=n?n.title:'';$('#nb').value=n?n.body:'';$('#nt').disabled=$('#nb').disabled=!n;
+}
+$('#qn').oninput=renderNl;
+function newNote(){const n={id:Date.now(),title:'Nouvelle note',body:''};N.unshift(n);$('#qn').value='';noteId=n.id;saveNotes();renderNotes();$('#nt').select()}
+async function delNote(id){const n=N.find(x=>x.id===id);if(n.body&&!await dlg({title:'Supprimer cette note ?',msg:`« ${n.title} » sera supprimée définitivement.`,ok:'Supprimer',danger:1}))return;N=N.filter(x=>x.id!==id);if(noteId===id)noteId=N[0]?.id;saveNotes();renderNotes();toast('Note supprimée')}
+function editNote(){const n=N.find(x=>x.id===noteId);if(!n)return;n.title=$('#nt').value;n.body=$('#nb').value;const li=$('#ni_'+n.id);if(li)li.textContent=n.title||'Sans titre';clearTimeout(nTimer);nTimer=setTimeout(saveNotes,300)}
+$('#nt').oninput=$('#nb').oninput=editNote;
+window.addEventListener('pagehide',saveNotes);
+
+/* ---------- Configuration ---------- */
+const TABS=[['suiviTemplates','Modèles de suivi'],['clotureTemplates','Modèles de clôture'],['conclusions','Conclusions'],['actions','Actions menées'],['problems','Problématiques']];
+const cfgRow=(x,i)=>{
+  const k=cfgTab,id=k+':'+i,tr=`<button class="btn s d" data-act="del" data-k="${k}" data-i="${i}" aria-label="Supprimer">${ic('trash')}</button>`;
+  if(x.title===undefined)return`<div class="li" style="align-items:center"><span>${esc(x.text)}</span><div class="acts">${tr}</div></div>`;
+  if(editT!==id)return`<div class="li"><div style="min-width:0;flex:1"><strong>${esc(x.title)}</strong><pre style="white-space:pre-wrap;font:12px/1.5 inherit;color:var(--mu);margin-top:4px;max-height:72px;overflow:hidden">${esc(x.text)}</pre></div><div class="acts"><button class="btn s" data-act="editt" data-k="${k}" data-i="${i}" aria-label="Modifier ce modèle">${ic('edit')}</button>${tr}</div></div>`;
+  return`<div class="li" style="flex-direction:column;align-items:stretch"><div class="f"><label for="ti_${i}">Titre</label><input id="ti_${i}" value="${esc(x.title)}"></div><div class="f"><label for="tx_${i}">Contenu</label><textarea id="tx_${i}" rows="9">${esc(x.text)}</textarea></div><div class="acts"><button class="btn s" data-act="cancelt">Annuler</button><button class="btn p s" data-act="savet" data-k="${k}" data-i="${i}">Enregistrer</button></div></div>`;
+};
+function renderCfg(){
+  $('#tabs').innerHTML=TABS.map(([k,l])=>`<button data-act="tab" data-k="${k}" class="${k===cfgTab?'on':''}">${l}</button>`).join('');
+  let h='';
+  if(cfgTab==='problems'){
+    h=`<div class="top"><span class="sub" style="margin:0">Regroupées par catégorie.</span><button class="btn p" data-act="addp"><i data-i="plus"></i>Ajouter</button></div>`+S.problemsCategories.map((c,ci)=>`<div class="grp"><div class="top"><h3>${esc(c.category)}</h3><button class="btn s d" data-act="delg" data-ci="${ci}">Supprimer le groupe</button></div><div class="list">${c.items.map((p,pi)=>`<div class="li" style="align-items:center"><span>${esc(p)}</span><button class="btn s d" data-act="delp" data-ci="${ci}" data-pi="${pi}" aria-label="Supprimer cette problématique">${ic('trash')}</button></div>`).join('')||'<p class="empty">Aucune problématique.</p>'}</div></div>`).join('');
+  }else{
+    const l=S[cfgTab];
+    h=`<div class="top"><span class="sub" style="margin:0">${l.length} élément(s)</span><button class="btn p" data-act="add" data-k="${cfgTab}"><i data-i="plus"></i>Ajouter</button></div><div class="list" style="margin-top:12px">`+(l.map(cfgRow).join('')||'<p class="empty">Rien pour le moment. Ajoutez un premier élément.</p>')+'</div>';
+  }
+  $('#cfgBox').innerHTML=h;icons($('#cfgBox'));
+}
+function problemForm(){return new Promise(res=>{
+  const d=$('#dlg'),gs=S.problemsCategories.map(c=>c.category);
+  d.innerHTML=`<form><h2 style="font-size:16px">Ajouter une problématique</h2><div class="f"><label for="pg">Groupe</label><select id="pg" name="pg">${gs.map((g,i)=>`<option value="${esc(g)}"${i?'':' selected'}>${esc(g)}</option>`).join('')}<option value="__new"${gs.length?'':' selected'}>＋ Nouveau groupe…</option></select></div><div class="f" id="pnw"><label for="pgn">Nom du nouveau groupe</label><input id="pgn" name="pgn" autocomplete="off"></div><div class="f"><label for="pp">Intitulé</label><input id="pp" name="pp" autocomplete="off"></div><div class="acts"><button type="button" class="btn" data-x>Annuler</button><button class="btn p">Enregistrer</button></div></form>`;
+  const f=d.querySelector('form'),sel=f.elements.pg,sync=()=>{$('#pnw').style.display=sel.value==='__new'?'flex':'none'};
+  sel.onchange=sync;sync();
+  d.querySelector('[data-x]').onclick=()=>d.close();
+  f.onsubmit=e=>{e.preventDefault();const g=sel.value==='__new'?f.elements.pgn.value.trim():sel.value,p=f.elements.pp.value.trim();if(!g||!p)return toast('Le groupe et l’intitulé sont obligatoires','err');d.close();res({g,p})};
+  d.addEventListener('close',()=>res(null),{once:true});d.showModal();(gs.length?f.elements.pp:f.elements.pgn).focus();
+})}
+async function addP(){const v=await problemForm();if(!v)return;let c=S.problemsCategories.find(c=>c.category.toLowerCase()===v.g.toLowerCase());if(!c)S.problemsCategories.push(c={category:v.g,items:[]});c.items.push(v.p);persist();toast('Problématique ajoutée')}
+async function delG(ci){const c=S.problemsCategories[ci];if(await dlg({title:`Supprimer le groupe « ${c.category} » ?`,msg:`Ses ${c.items.length} problématique(s) seront supprimées.`,ok:'Supprimer',danger:1})){S.problemsCategories.splice(ci,1);persist();toast('Groupe supprimé')}}
+
+function exportCfg(){
+  const b=new Blob([JSON.stringify({config:S,notes:N},null,2)],{type:'application/json'}),a=document.createElement('a');
+  a.href=URL.createObjectURL(b);a.download=`SFR_RCT_Sauvegarde_${new Date().toISOString().slice(0,10)}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('Sauvegarde exportée');
+}
+$('#file').onchange=e=>{
+  const f=e.target.files[0];e.target.value='';if(!f)return;
+  const r=new FileReader();
+  r.onload=async()=>{
+    let o;try{o=JSON.parse(r.result);if(!o||typeof o!=='object'||Array.isArray(o))throw 0}catch{return toast('Fichier JSON invalide','err')}
+    if(!await dlg({title:'Importer ce fichier ?',msg:'La configuration actuelle sera remplacée'+(Array.isArray(o.notes)?', ainsi que vos notes.':'.'),ok:'Importer',danger:1}))return;
+    S=norm(o.config||o);
+    if(Array.isArray(o.notes)){N=o.notes.filter(n=>n&&n.id).map(n=>({id:n.id,title:String(n.title||''),body:String(n.body||'')}));noteId=N[0]?.id;saveNotes()}
+    persist();renderNotes();toast('Import réussi');
+  };
+  r.onerror=()=>toast('Lecture du fichier impossible','err');r.readAsText(f);
+};
+async function defaults(){if(await dlg({title:'Tout réinitialiser ?',msg:'Modèles, listes, outils et numéros reviennent aux valeurs par défaut. Vos notes sont conservées.',ok:'Réinitialiser',danger:1})){S=mk();persist();toast('Valeurs par défaut restaurées')}}
+
+/* ---------- Navigation & actions ---------- */
+function show(v){$$('.view').forEach(e=>e.classList.toggle('on',e.id==='v-'+v));$$('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));scrollTo(0,0)}
+const A={
+  nav:b=>show(b.dataset.v),copy:b=>copy($(b.dataset.t).value,b),reset:resetCall,
+  chip:b=>{const v=b.dataset.v,i=D.acts.indexOf(v);i<0?D.acts.push(v):D.acts.splice(i,1);b.setAttribute('aria-pressed',i<0);refresh()},
+  add:b=>editItem(b.dataset.k,-1),edit:b=>editItem(b.dataset.k,+b.dataset.i),del:b=>delItem(b.dataset.k,+b.dataset.i),
+  copyn:b=>copy(S.transfers[+b.dataset.i].number,b),newNote,selnote:b=>{noteId=+b.dataset.id;renderNotes()},delnote:b=>delNote(+b.dataset.id),
+  editt:b=>{editT=b.dataset.k+':'+b.dataset.i;renderCfg()},cancelt:()=>{editT=null;renderCfg()},
+  savet:b=>{const k=b.dataset.k,i=+b.dataset.i,title=$('#ti_'+i).value.trim(),text=$('#tx_'+i).value.trim();if(!title||!text)return toast('Le titre et le contenu sont obligatoires','err');S[k][i]={title,text};persist();toast('Modèle enregistré')},
+  searchnote:()=>{renderNl();$('#qn').focus()},
+  tab:b=>{cfgTab=b.dataset.k;editT=null;renderCfg()},addp:addP,delp:b=>{const c=S.problemsCategories[+b.dataset.ci];c.items.splice(+b.dataset.pi,1);persist()},delg:b=>delG(+b.dataset.ci),
+  export:exportCfg,import:()=>$('#file').click(),defaults
+};
+document.addEventListener('click',e=>{
+  const s=e.target.closest('[data-seg] button');if(s){const k=s.parentNode.dataset.seg;D[k]=s.dataset.val;if(k==='mode')D.tpl='';renderCall();return}
+  const b=e.target.closest('[data-act]');if(!b)return;
+  if(b.dataset.act==='selnote'&&e.target.closest('[data-act=delnote]'))return;
+  A[b.dataset.act]?.(b);
+});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.dataset.act==='selnote')A.selnote(e.target)});
+const icons=r=>r.querySelectorAll('i[data-i]').forEach(e=>e.outerHTML=ic(e.dataset.i));
+function renderAll(){renderCall();renderTools();renderTransfers();renderCfg()}
+icons(document);renderAll();renderNotes();
+if(!N.length)newNote();
+</script>
+</body>
+</html>
